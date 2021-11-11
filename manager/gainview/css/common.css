@@ -1,0 +1,771 @@
+@import url('https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Teko&display=swap');
+
+* { /* 전체 패딩 , 마진 제거 */ margin : 0; padding : 0;}
+@font-face { /* 넥슨 에서 배포하는 글씨체 */
+    font-family: 'NEXON Lv1 Gothic OTF';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff')
+    format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+/* 전체 영역을 잡기 위한 부분 */
+html , body { width : 100%;height : 100%;font-family: 'NEXON Lv1 Gothic OTF'}
+
+a {text-decoration: none;color : #000;}
+a:hover {color: gainsboro;}
+
+header {display : flex;flex-basis : 105px;flex-shrink: 0; background-image: linear-gradient(-225deg, #6EC5C9 0%, #C1DABE 100%); align-items: center;}
+header img {width: 4.5%;margin: 0 0 0 30px;}
+header p {
+    font-family: 'Londrina Solid' , cursive;
+    color : #fff;
+    line-height : 105px;
+    vertical-align: middle;
+    font-size : 32px;
+    padding-left : 10px;
+    font-weight : bold;
+}
+
+footer {display : flex;flex-basis : 105px;flex-shrink: 0;background-color : #000;}
+
+.layout { /* 레이아웃 만들기 위해 선언*/
+    display: flex;
+    flex-direction : column;
+    height : 100%;
+    width : 100%;
+}
+
+.main_content { /* 가운데 내용이 들어간 부분 영역 */
+    display: flex;
+    height : 100%;
+    /*border-top : 1px solid #000;
+    border-bottom : 1px solid #000;*/
+}
+
+.aside_content { /* 왼쪽 사이드 영역 부분*/
+    display : flex;
+    flex-shrink : 0;
+    flex-basis : 140px;
+    flex-direction : column;
+}
+
+nav { 
+    display: flex;
+    flex-wrap : wrap;
+    flex : 4 0 0;
+    border-right : 1px solid #000;
+    border-color: rgba(0,0,0,0.5);
+    padding : 40px 20px 20px 20px;
+}
+
+nav .nav_list {
+    display : flex;
+    flex-direction: column;
+    flex : 1 1 40%;
+    align-items : center;
+    justify-content : center;
+    cursor : pointer;
+}
+
+
+nav .nav_list img {
+    width : 50px;
+    height : 50px;
+}
+
+
+nav .nav_list p {
+    font-family: 'NEXON Lv1 Gothic OTF';
+    margin : 20px 0px 20px 0px;
+    font-weight : 900;
+    font-size : 16px;
+}
+
+main {
+    display : flex;
+    flex : 1;
+    overflow : auto;
+}
+
+/* ------------------------------------------------------------------------ */
+/* delivery_map css */
+
+#map {
+    flex : 1;
+}
+
+.wrap {position: absolute;left: 0;bottom: 40px;width: 288px;height: 132px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'NEXON Lv1 Gothic OTF';line-height: 1.5;}
+.wrap * {padding: 0;margin: 0;}
+.wrap .info {width: 286px;height: 120px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
+.wrap .info:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
+.info .title {padding: 5px 0 0 10px;height: 30px;background: #eee;border-bottom: 1px solid #ddd;font-size: 18px;font-weight: bold;}
+.info .close {position: absolute;top: 10px;right: 10px;color: #888;width: 17px;height: 17px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');}
+.info .close:hover {cursor: pointer;}
+.info .body {position: relative;overflow: hidden;}
+.info .desc {position: relative;margin: 13px 0 0 90px;height: 75px;}
+.desc .ellipsis {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.desc .jibun {font-size: 11px;color: #888;margin-top: -2px;}
+.info .img {position: absolute;top: 6px;left: 5px;width: 73px;height: 71px;border: 1px solid #ddd;color: #888;overflow: hidden;}
+.info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 0;width: 22px;height: 12px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
+.info .link {color: #5085BB;}
+
+#delivery_status {
+    flex-basis : 320px;
+    overflow-y : scroll;
+    box-sizing : border-box;
+    border-left : 1px solid;
+    border-color : rgba(0,0,0,0.5);
+    height: 88.9vh;
+}
+
+#delivery_status::-webkit-scrollbar {
+    width : 7px;
+}
+
+#delivery_status::-webkit-scrollbar-thumb {
+    background-image : linear-gradient(-225deg, #6EC5C9 0%, #C1DABE 100%);;
+    border-radius : 10px; 
+}
+
+#delivery_status::-webkit-scrollbar-track {
+    background : none;
+}
+
+.delivery_man_list {
+    display : flex;
+    font-family : 'NEXON Lv1 Gothic OTF';
+    width : 100%;
+    height : 15%;
+    font-size : 15px;
+      
+}
+
+.delivery_man_list:not(:first-child) {
+    margin : 15px 0px 15px 0px; 
+}
+
+.damage_progress {
+    flex: 0.88;
+    justify-content: flex-end;
+    align-items: center;
+    display: flex;
+}
+
+.circle {
+    font-family : 'Teko' , sans-serif;
+    font-size : 24px;
+    color : white;
+    background-color: cyan;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+.rec {
+   flex: 1.5;
+    display: flex;
+    align-items: center;
+    font-size: 17px;
+    line-height: 2;
+    margin-left: 11px;
+}
+
+/* ------------------------------------------------------------------------ */
+/* login css */
+
+.member {
+    display : flex;
+    flex : 1 0 100%;
+    justify-content: center;
+    align-items: center;
+    /* background-color : #DCEBFF;*/
+    background-image: linear-gradient(-225deg, #801357 0%, #1c1a27 100%);
+    /* background-image: linear-gradient(-225deg, #dbdcd7 0%, #dddcd7 24%, #e2c9cc 30%, #e7627d 46%, #b8235a 59%, , #3d1635 84%, ); */
+}
+
+.member_form {
+    display : flex;
+    width : 50%;
+    height : 80%;
+    box-shadow: 0 30px 30px rgba(0,0,0,0.34), 0 6px 6px rgba(0,0,0,0.52);
+}
+
+.member_form input:not([type="submit"]) {
+    font-family: 'NEXON Lv1 Gothic OTF';
+    border : none;
+    outline : none;
+    border-bottom : 1px solid #000;
+    border-color: #1c1a27;
+    height : 2.2vw;
+    margin-bottom : 1.5vw;
+    font-size : 0.9vw;
+}
+
+.member_form input[type="submit"] {
+    font-family: 'NEXON Lv1 Gothic OTF';
+    cursor: pointer;
+    font-size : 0.9vw;
+    border : none;
+    width : 100%;
+    height : 2.5vw;
+    /* background-image: linear-gradient(-225deg, #1c1a27 0%, #801357 100%); */
+    background-image: linear-gradient(-225deg, #801357 0%, #1c1a27 100%);
+    color : #fff;
+    margin : 0.5vw 0px 1.5vw 0px;
+}
+
+.member_banner {
+    flex : 1 1 45%;
+    background-color : #000;
+    background-image : url('../images/login_logo.jpg');
+    background-size : 100% 100%;
+}
+
+.login_input , .register_input , .member_choice_input , .member_register_term_input {
+    position : relative;
+    font-family: 'NEXON Lv1 Gothic OTF';
+    display : flex;
+    flex-direction : column;
+    flex : 1 1 55%;
+    background-color : #fff;
+    align-items: center;
+}
+
+.login_input p:first-child {
+    font-size : 3.7vh;
+    padding : 8vh 0px 8vh 0px;
+}
+
+.login_input p:nth-child(2) {
+    font-size : 1.2vw;
+    padding : 0px 0px 6vh 0px;
+}
+
+.login_input form , .register_input form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width : 80%;
+}
+
+label {
+    display: block;
+    font-size : 0.9vw;
+}
+
+.member_option_list {
+    display: flex;
+    width : 80%;
+    padding-top : 1.2vw;
+}
+
+.member_option_list .member_option {
+    flex : 1 1 0;
+    font-size : 0.85vw;
+    text-align: center;
+    border-color: rgba(0,0,0,0.5);
+}
+
+/* ------------------------------------------------------  */
+/* register.php */
+
+.register_type_select {
+    display : flex;
+    width : 100%;
+    justify-content: center;
+    border-bottom : 1px solid #000;
+    margin-bottom : 4vh;
+}
+
+.register_type_select p {
+    flex : 1;
+    text-align: center;
+    padding : 1.5vw 0px 1.5vw 0px;
+    cursor: pointer;
+    font-size : 0.9vw;
+}
+
+.register_type_select #register_type_consumer {
+    color : white;
+}
+
+.form_error_text {
+    color : #801357;
+    font-weight : bold;
+    font-size : 0.8vw;
+}
+
+.registerInputForm {
+    display: flex;
+}
+
+.registerInputForm select {
+    font-family : 'NEXON Lv1 Gothic OTF';
+    height : 2.24vw;
+    outline : none;
+    border : none;
+    border-bottom : 1px solid #1c1a27;
+    font-size : 0.9vw;
+}
+
+.registerInputForm select , .registerInputForm input {
+    flex : 1;
+}
+
+.registerInputForm #registerPhoneTwo {
+    margin : 0px 0.4vw 0px 0.4vw;
+}
+
+.registerInputForm #registerBirth {
+    margin : 0px 0.4vw 0px 0.4vw;
+}
+
+/* ------------------------------------------------------  */
+/* member_choice.php */
+
+.member_choice_input article {
+    display: flex;
+    flex-direction : column;
+    flex : 1 1 50%;
+    width : 100%;
+}
+
+.member_choice_input article p {
+    text-align: center;
+    background-image: linear-gradient(-225deg, #1c1a27 0%, #801357 100%);
+    border-bottom : 1px solid #1c1a27;
+    border-color: rgba(0,0,0,0.5);
+    font-size : 1.1vw;
+    color : #ffffff;
+    padding : 1.1vw 0px 1.1vw 0px;
+}
+
+#registerPhoneOne {
+    display: none;
+}
+
+/* ------------------------------------------------------  */
+/* register_term.php */
+
+.register_terms {
+    width : 80%;
+    flex : 1;
+}
+
+.register_terms article {
+    margin : 0px 0px 2vh 0px;
+    border-collapse: collapse;
+    border : 1px solid #000;
+}
+
+.register_terms p {
+    font-size : 0.8vw;
+    padding : 1vh 0px 1vh 1vh;
+}
+
+.chk_hide {
+    position : absolute;
+    top : 0;
+    left : 0;
+    width : 0px;
+    height : 0px;
+    opacity: 0;
+    z-index : -1000;
+    overflow : hidden;
+}
+
+.register_terms input[type="checkbox"] + label {
+    position : absolute;
+    top : 0.6vw;
+    right : 0.6vw;
+    width : 0.6vw;
+    height : 0.6vw;
+    display : block;
+    border : 2px solid #000;
+    cursor : pointer;
+}
+
+.register_terms input[type="checkbox"]:checked + label {
+    background-color : #801357;
+}
+
+.register_terms textarea {
+    font-family: 'NEXON Lv1 Gothic OTF';
+    width : 100%;
+    height : 4.5vw;
+    box-sizing: border-box;
+    outline : none;
+    border : none;
+    resize : none;
+    border-top : 1px solid #000;
+    padding : 1vh;
+    font-size : 0.7vw;
+}
+
+.register_terms_personal , .register_terms_promotion , .register_terms_user , .register_terms_all {
+    position : relative;
+}
+
+/*--------------------------------------------------------------------*/
+/* delivery.html css, pro_info.html */
+.delivery-table-sort, .buy-table-sort {margin: 3rem 0 auto 7rem; flex: 1;}
+.buy-table-sort{overflow-x: hidden;}
+.underline {border-bottom: 2px solid #999; width: 90%;}
+.search_area p, .search_result p {font-size: 2rem; font-weight: bold; padding: 10px 0;}
+.search_area table, .search_result table { border-collapse:collapse; margin-top: 20px; width: 90%; text-align: center;}
+.search_area table tr, .search_area table td, .search_result table th, .search_result table td{border: 1px solid #888; padding: 12px;}
+.search_area table td:nth-child(+2) {text-align: left;}
+.search_area table input[type="text"],.search_area table select  { padding: 12px; font-size: 1rem;}
+.search_area table input[type="text"]:nth-child(2) {width:89.3%;}
+.search_area table input[type="text"] {width: 97%;} 
+.search_area table td:nth-child(+1) {background-color: #e9e9e9; font-weight: bold; font-size: 1.11rem;}
+.search_result table th {background-color: #eaeaea; font-size: 1.11rem; padding: 15px;}
+.search_result table td {font-size: 1rem; padding: 15px;}
+
+.search_area input[type="submit"] {text-align: center; padding: 15px 20px; margin: 20px 20px 0 0; font-size: 1rem; border-radius: 7px; border: none;}
+.search_area input[type="submit"]:nth-last-child(2) {background-color: #5e5e5e; color: white;}
+
+.delivery-button {width: 90%; display: flex; flex-direction: row; justify-content: center; }
+
+/*--------------------------------------------------------------------*/
+/*pro_info.html*/
+.table-bordered {width: 90%; text-align: center; margin-top: 20px;}
+.buy-table-sort {margin: 5rem 0 0 10rem;}
+.info_underline p {font-size: 3rem; font-weight: bold;}
+.buy-table-sort th {text-align: center; text-decoration: bold; padding: 10px 0; font-size: 1.8rem;}
+.info_underline {border-bottom: 2px solid #999; width: 90%;}
+.col-sm-7 {width: 90%;}
+.col-sm-12 {margin-top: 20px;}
+table.table-bordered.dataTable tbody td {padding: 10px 0; font-size: 1.5rem;}
+
+
+/*---- 판매처 웹사이트 css -----*/
+/*--------------------------------------------------------------------*/
+/* seller_main css */
+.container {display: flex; justify-content:center; align-items: center;background-image: linear-gradient(-225deg, #bccebe 0%, #ffffff 100%);height: 700px; position: relative; top: 10%;}
+.main_img img {width: 450px;height: 450px; margin-right: 100px;} 
+.consumer_hd {justify-content: space-between; }
+.head_logo {display: flex; align-items: center; flex-direction: row; }
+.head_logo img {width: 26%;}
+.consumer_hd ul {margin-right: 20px;}
+.consumer_hd ul li {list-style-type: none; display: inline-block; padding: 5px;}
+.caution {width: 50%;}
+
+.caution h1 {font-family: 'NEXON Lv1 Gothic OTF';text-align: center;}
+
+.caution p {font-family: 'NEXON Lv1 Gothic OTF';line-height: 200%;}
+
+.caution input[type="buy_box"] {
+    font-family: 'NEXON Lv1 Gothic OTF';
+    cursor : pointer;
+    font-size: 0.9vw;
+    text-align: center;
+    border: none;
+    width: 100%;
+    height: 2.5vw;
+    background-image : linear-gradient(-225deg, #6EC5C9 0%, #C1DABE 100%);
+    color:#fff;
+    margin: 0.5vw 0px 1.5vw 0px;
+}
+
+/* ------------------------------------------------------------------------ */
+/* buy_box css */
+
+.buy_box_content {display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;}
+.perfume_img img {width: 100%;}
+.perfume_content {
+    width: 600px;
+    font-family: 'NEXON Lv1 Gothic OTF';
+    padding: 5%;
+}
+.se_box_un {position: absolute; top: 0%; border-bottom: 1px solid #444444; width: 600px;padding: 0 0 14px 0;}
+.perfume_content {position: relative;}
+.perfume_content input[type="purchase"] {
+    font-family: 'NEXON Lv1 Gothic OTF';
+    cursor : pointer;
+    font-size: 0.9vw;
+    text-align: center;
+    border: none;
+    width: 100%;
+    height: 2.5vw;
+    background-image : linear-gradient(-225deg, #6EC5C9 0%, #C1DABE 100%);
+    color:#fff;
+    margin: 0.5vw 0px 1.5vw 0px;
+}
+.amount {width: 200px;padding: .8em .5em;font-family: inherit;}
+
+.box_table input { padding: .5em .5em; font-family: inherit;}
+
+.box_table2 { padding: .5em .5em; font-family: inherit;}
+
+.box_table th {text-align: left;}
+.box_table td {text-align: right;}
+.box_table_img {width: 30px;height: 30px;}
+
+/* ------------------------------------------------------------------------ */
+/* purchase css */
+
+.purchase_content {
+    width: 100%;
+    height: 100%;
+    padding: 40px;
+    font-family: 'NEXON Lv1 Gothic OTF';
+    line-height: 200%;
+}
+
+.title {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 30px;
+}
+
+.buy1, .buy2, .buy3, .buy4 {
+    margin-bottom: 3%;
+}
+
+hr {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.table2 input {
+    padding: .5em .5em;
+    font-family: inherit;
+}
+
+table {
+    width: 100%;
+}
+
+.table1 {
+    border-top: 1px solid #444444;
+    border-collapse: collapse;
+}
+
+.table1 th, .table1 td {
+    border-bottom: 1px solid #444444;
+    padding: 10px;
+}
+
+.table0 th, .table2 th, .table4 th {
+    text-align: left;
+}
+
+.table3 th, .table3 td {
+    text-align: center;
+}
+
+.table0 td, .table4 td {
+    text-align: right;
+}
+
+table img {
+    width: 100px;
+    height: 120px;
+}
+
+.edit_info input[type="text"] {
+    font-size: 1.1rem;
+    margin: 0.3rem 0;
+    width: 30%;
+    padding: 1rem 1rem;
+    font-family: inherit;
+}
+.edit_info input[type="button"] {
+    border-radius: 5px;
+    border: none;
+    font-size: 1.1rem;
+    margin: 0.3rem 0;
+    width: auto;
+    padding: 1rem 1rem;
+    font-family: inherit;
+}
+#sample6_postcode {width: 20%;}
+
+.cellphone {
+    padding: .5em .5em;
+    font-family: inherit;
+}
+
+.buy5 {
+    text-align: center;
+}
+
+.cancle, .payment {
+    width:100px;
+    border-radius: 5px;
+    border: none;
+    color:#fff;
+    padding: 15px 0;
+    text-align: center;
+    display: inline-block;
+    font-size: 15px;
+    margin: 4px;
+    cursor: pointer;
+}
+
+.cancle {
+    background-color: gainsboro;
+}
+
+.payment {
+    background-color: #6EC5C9;
+}
+
+
+
+/*---- 소비자 웹사이트 css -----*/
+/*--------------------------------------------------------------------*/
+/*consumer_main.html css*/
+.consumer_hd {justify-content:space-between;}
+header ul {margin-right: 20px;}
+header ul li{list-style-type: none; display: inline-block; padding: 5px;}
+.hd_logo {display: inline-flex; align-items: center; flex-direction: row;}
+.hd_logo img {width: 26%;}
+
+.back_grd {position: relative; width: 100%;height: 60vh;background: rgb(200,231,226);background: linear-gradient(180deg, rgba(200,231,226,1) 20%, rgba(251,241,230,1) 80%);}
+.s_text_hd p {text-align: center;}
+.s_text_hd p:first-child {color: #000; font-size: 2rem;padding: 4rem 0 2rem 0;}
+.s_text_hd p {font-weight: bold; font-size: 1.9rem; padding: 0 0 2rem 0; color: #28996E;}
+
+.cons_img_sort {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);}
+
+.main_contnent_sort {display: flex; justify-content:center; align-items: center;}
+.main_contnent_l, .main_contnent_c, .main_contnent_r {background: #F2F2F2;box-shadow: 6px 7px 15px 3px rgba(145,145,145,0.68); }
+.main_contnent_l {width: 34vw; height: 32vh;}
+.main_contnent_l .p_first{font-size: 1.7rem;  padding: 1rem; font-weight: bold;color: #28996E;}
+.main_contnent_l p:last-child {line-height: 180%; font-size: 1.5rem; font-weight: bold; padding: 0.1rem 1rem; color: #000;}
+.main_contnent_c {width: 23vw; height: 32vh; margin: 0 5rem; position: relative;}
+.main_contnent_c img, .main_contnent_r img {position: absolute; top: 60%; left: 50%; transform: translate(-50%, -50%);}
+.main_contnent_c img {width: 40%;}
+.main_contnent_r img {width: 55%;}
+.main_contnent_r {width: 23vw; height: 32vh; position: relative;}
+
+.app_ft {line-height: 180%; font-size: 1.5rem; font-weight: bold; padding: 0.1rem 1rem; color: #000;}
+
+.main_contnent_sort {position: absolute; bottom: -50%; left: 50%;  transform: translate(-50%, -50%);}
+
+.plus_square {font-size: 2rem; font-weight: bold; width: auto; border-radius: 5px; text-align: center; vertical-align: middle; background: #9DD0C7; color: #fff; padding: 0.1rem 0.7rem;}
+.b_square_hd {display: flex; align-items: center; justify-content: space-between; padding: 1rem;}
+.b_square_hd p {font-size: 1.5rem; font-weight: bold;}
+
+.slideshow-container {position: relative;margin: 0;}
+.mySlides {display: none;}
+
+.dot {cursor: pointer;height: 15px;width: 15px;margin: 0 2px;background-color: #fff; border-radius: 50%;display: inline-block;transition: background-color 0.6s ease;}
+.active, .dot:hover {background-color: #9DD0C7;}
+.dot_sort {position: absolute; top: 5%;right: 3%;}
+.fade {-webkit-animation-name: fade;-webkit-animation-duration: 1.5s;animation-name: fade;animation-duration: 1.5s;}
+
+.g_img {width: 25%; margin: auto 0; padding: 0 1rem 0 0.5rem;}
+.ftim_sort {display: flex; align-items: center;}
+
+
+/*--------------------------------------------------------------------*/
+/* con_list css */
+
+.user {
+    width: 60px;
+    height: 60px;
+    margin-right: 2rem;
+}
+
+.table-bordered {width: 90%; text-align: center; margin-top: 20px;}
+.buy-table-sort {margin: 5rem 0 0 10rem;}
+.info_underline p {font-size: 3rem; font-weight: bold;}
+.buy-table-sort th {text-align: center; text-decoration: bold; padding: 10px 0; font-size: 1.8rem;}
+.info_underline {border-bottom: 2px solid #999; width: 90%;}
+.col-sm-7 {width: 90%;}
+.col-sm-12 {margin-top: 20px;}
+table.table-bordered.dataTable tbody td {padding: 10px 0; font-size: 1.5rem;}
+
+/*--------------------------------------------------------------------*/
+/* con_detail css */
+
+.perfume_details {width: 75%; margin: auto auto;}
+
+.info_perfume_details img {width: 4%;margin:0 1rem 0 0;}
+
+.info_perfume_details{
+    display: flex; align-items: center;
+    border-bottom: 1px solid gray;
+    font-size: 2rem; font-weight: bold;
+    padding: 0.5rem 0;
+    margin: 1.2rem 0;
+}
+.about_perfume {padding: 3.5rem 0; display: flex; justify-content:center; align-items: center;  position: relative; border: 2px solid gray;}
+
+.perfume_img img {width: 90%;}
+.perfume_info {line-height: 300%;}
+.perfume_info a {float: right;color: blue;}
+.perfume_info ::after {clear: both;}
+
+/*--------------------------------------------------------------------*/
+/* con_map css */
+
+.con_map_main {
+    width: 90%;
+    padding: 3%;
+}
+
+#con_map {
+    width: 100%;
+    height: 90%;
+}
+
+/*--------------------------------------------------------------------*/
+/* edit css */
+
+.edit_profile {
+    padding: 4%;
+    width: 90%;
+}
+
+.edit_profile h1 {
+    font-size: 2rem;
+    margin-bottom: 2%;
+}
+
+.profile {background-color: lightgray; padding: 1%; display: flex; justify-content:flex-start; align-items: center;}
+.img_info {display: flex; flex-direction: column; margin: 1rem;}
+.img_info input {padding: 0 0 0.2rem 0.2rem; margin: 0.5rem 0; background: none; border: none; cursor: pointer; font-size: 1.2rem; font-weight: bold; border-bottom: 1px solid #666666;}
+.profile img {
+    width: 5%;
+    height: 5%;
+}
+
+.cancle_profile, .edit_profile_button {
+    width:10%;
+    font-weight: bold;
+    border-radius: 5px;
+    border: none;
+    color:#fff;
+    padding: 1.2rem 0;
+    text-align: center;
+    display: inline-block;
+    font-size: 1.3rem;
+    margin: 4px;
+    cursor: pointer;
+}
+
+.cancle_profile {
+    background-color: gainsboro;
+    color: #000;
+}
+
+.edit_profile_button {
+    background-color: #6EC5C9;
+}
+
+.edit2 h2 {
+    margin-top: 2rem;
+}
+.edit_info {margin-top: 2rem;}
+.edit_info th, td {
+    font-size: 1.2rem;
+}
+
+.buy5 {margin-top: 5%;}
